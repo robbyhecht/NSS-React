@@ -4,6 +4,7 @@ import AnimalList from './animal/AnimalList'
 import LocationList from './location/LocationList'
 import EmployeeList from './employee/EmployeeList'
 import OwnerList from './owner/OwnerList'
+// import AnimalManager from "../modules/AnimalManager"
 
 
 class ApplicationViews extends Component {
@@ -46,12 +47,17 @@ class ApplicationViews extends Component {
   ]
 
   state = {
-    employees: this.employeesFromAPI,
-    locations: this.locationsFromAPI,
-    animals: this.animalsFromAPI,
-    owners: this.ownersFromAPI,
-    relationships: this.relationshipsFromAPI
-  }
+    locations: [],
+    animals: [],
+    employees: []
+}
+  // state = {
+  //   employees: this.employeesFromAPI,
+  //   locations: this.locationsFromAPI,
+  //   animals: this.animalsFromAPI,
+  //   owners: this.ownersFromAPI,
+  //   relationships: this.relationshipsFromAPI
+  // }
 
   render() {
     return (
