@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "./Location.css"
 
 class LocationList extends Component {
   render() {
@@ -6,8 +7,12 @@ class LocationList extends Component {
       <section className="locations">
         {
           this.props.locations.map(location =>
-            <div key={location.id}>
-              {location.name}
+            <div key={location.id} className="card">
+              <div className="card-body">
+                <h5 className="card-title">
+                  {location.name}
+                </h5>
+              </div>
             </div>
           )
         }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import "./Owner.css"
+import "./Owner.css"
 
 export default class List extends Component {
     render() {

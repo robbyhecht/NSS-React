@@ -1,4 +1,4 @@
-.owners {
+.locations {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -13,9 +13,4 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-}
-
-.card-link {
-  margin: 12px 0 0 0;
-  font-size: 0.7em;
 }
