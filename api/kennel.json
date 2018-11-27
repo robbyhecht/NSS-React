@@ -28,40 +28,45 @@
   "animals": [
     {
       "id": 1,
-      "name": "Doodles"
+      "name": "Doodles",
+      "breed": "Schnoodle"
     },
     {
       "id": 2,
-      "name": "Jack"
+      "name": "Jack",
+      "breed": "Poodle"
     },
     {
       "id": 3,
-      "name": "Angus"
+      "name": "Angus",
+      "breed": "Labradoodle"
     },
     {
       "id": 4,
-      "name": "Henley"
-    },
-    {
-      "id": 5,
-      "name": "Derkins"
+      "name": "Henley",
+      "breed": "Golden Doodle"
     }
   ],
   "owners": [
     {
-      "id": 2,
+      "id": 1,
       "phone": "615-222-2222",
       "name": "Emma Beaton"
     },
     {
-      "id": 3,
+      "id": 2,
       "phone": "444-555-6666",
       "name": "Dani Adkins"
     },
     {
-      "id": 4,
+      "id": 3,
       "phone": "666-777-9999",
       "name": "Adam Oswalt"
+    },
+    {
+      "id": 4,
+      "phone": "999-888-7654",
+      "name": "Rick Robertson"
     }
   ],
   "relationships": [
@@ -88,12 +93,12 @@
     {
       "id": 5,
       "animal_id": 3,
-      "owner_id": 5
+      "owner_id": 3
     },
     {
       "id": 6,
       "animal_id": 4,
-      "owner_id": 6
+      "owner_id": 4
     }
   ]
 }
