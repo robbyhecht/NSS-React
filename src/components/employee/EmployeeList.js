@@ -1,19 +1,17 @@
 import React, { Component } from "react";
 import "./Employee.css";
-import { Link } from "react-router-dom";
+import AnimalCard from "../animal/AnimalCard";
 
 export default class EmployeeList extends Component {
   render() {
     return (
       <section className="employees">
         {this.props.employees.map(employee => (
-          <div key={employee.id} className="card">
+          <div key={employee.id} className="card card--employee">
             <div className="card-body">
               <h5 className="card-title">
+                {/* <img src={person} className="icon--employee" /> */}
                 {employee.name}
-                <Link className="nav-link" to={`/employees/${employee.id}`}>
-                  Details
-                </Link>
                 <a
                   href="#"
                   onClick={() => this.props.deleteEmployee(employee.id)}
@@ -22,6 +20,15 @@ export default class EmployeeList extends Component {
                   Delete
                 </a>
               </h5>
+
+              <h6 class="card-subtitle mb-2 text-muted">Caretaker For</h6>
+              <div className="animals--caretaker">
+                {this.props.animals
+                  .filter(anml => anml.employeeId === employee.id)
+                  .map(anml => (
+                    <AnimalCard key={anml.id} animal={anml} {...this.props} />
+                  ))}
+              </div>
             </div>
           </div>
         ))}
@@ -29,6 +36,38 @@ export default class EmployeeList extends Component {
     );
   }
 }
+
+// import React, { Component } from "react";
+// import "./Employee.css";
+// import { Link } from "react-router-dom";
+
+// export default class EmployeeList extends Component {
+//   render() {
+//     return (
+//       <section className="employees">
+//         {this.props.employees.map(employee => (
+//           <div key={employee.id} className="card">
+//             <div className="card-body">
+//               <h5 className="card-title">
+//                 {employee.name}
+//                 <Link className="nav-link" to={`/employees/${employee.id}`}>
+//                   Details
+//                 </Link>
+//                 <a
+//                   href="#"
+//                   onClick={() => this.props.deleteEmployee(employee.id)}
+//                   className="card-link"
+//                 >
+//                   Delete
+//                 </a>
+//               </h5>
+//             </div>
+//           </div>
+//         ))}
+//       </section>
+//     );
+//   }
+// }
 
 // import React, { Component } from 'react'
 // class EmployeeList extends Component {
