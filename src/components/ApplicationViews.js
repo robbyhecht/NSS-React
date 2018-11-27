@@ -8,7 +8,7 @@ import AnimalManager from "../modules/AnimalManager";
 import EmployeeManager from "../modules/EmployeeManager";
 import LocationManager from "../modules/LocationManager";
 import OwnerManager from "../modules/OwnerManager";
-// import AnimalManager from "../modules/AnimalManager"
+import AnimalDetail from './animal/AnimalDetail'
 
 export default class ApplicationViews extends Component {
   state = {
@@ -63,7 +63,9 @@ export default class ApplicationViews extends Component {
             return <LocationList locations={this.state.locations} />;
           }}
         />
+
         <Route
+          exact
           path="/animals"
           render={props => {
             return (
@@ -74,6 +76,20 @@ export default class ApplicationViews extends Component {
             );
           }}
         />
+
+        <Route
+          path="/animals/:animalId(\d+)"
+          render={props => {
+            return (
+              <AnimalDetail
+                {...props}
+                deleteAnimal={this.deleteAnimal}
+                animals={this.state.animals}
+              />
+            );
+          }}
+        />
+
         <Route
           path="/employees"
           render={props => {
@@ -85,6 +101,7 @@ export default class ApplicationViews extends Component {
             );
           }}
         />
+
         <Route
           path="/owners"
           render={props => {
