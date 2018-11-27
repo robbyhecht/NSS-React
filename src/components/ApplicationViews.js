@@ -25,30 +25,30 @@ export default class ApplicationViews extends Component {
     //   .then(r => r.json())
     //   .then(locations => (newState.locations = locations))
 
-      LocationManager.getAll()
-      .then(locations => (newState.locations = locations))
+    LocationManager.getAll().then(
+      locations => (newState.locations = locations)
+    );
 
-      // .then(() => fetch("http://localhost:5002/animals"))
-      // .then(r => r.json())
-      // .then(animals => (newState.animals = animals));
+    // .then(() => fetch("http://localhost:5002/animals"))
+    // .then(r => r.json())
+    // .then(animals => (newState.animals = animals));
 
-      AnimalManager.getAll()
-      .then(animals => (newState.animals = animals))
+    AnimalManager.getAll().then(animals => (newState.animals = animals));
 
-      // .then(() => fetch("http://localhost:5002/employees"))
-      // .then(r => r.json())
-      // .then(employees => (newState.employees = employees))
+    // .then(() => fetch("http://localhost:5002/employees"))
+    // .then(r => r.json())
+    // .then(employees => (newState.employees = employees))
 
-      EmployeeManager.getAll()
-      .then(employees => (newState.employees = employees))
+    EmployeeManager.getAll().then(
+      employees => (newState.employees = employees)
+    );
 
-      // .then(() => fetch("http://localhost:5002/owners"))
-      // .then(r => r.json())
-      // .then(owners => (newState.owners = owners))
+    // .then(() => fetch("http://localhost:5002/owners"))
+    // .then(r => r.json())
+    // .then(owners => (newState.owners = owners))
 
-      OwnerManager.getAll()
+    OwnerManager.getAll()
       .then(owners => (newState.owners = owners))
-
 
       .then(() => this.setState(newState));
   }
@@ -99,44 +99,30 @@ export default class ApplicationViews extends Component {
       </React.Fragment>
     );
   }
+
+  // refactored to include function from AnimalManager module
   deleteAnimal = id => {
-    return fetch(`http://localhost:5002/animals/${id}`, {
-      method: "DELETE"
-    })
-      .then(e => e.json())
-      .then(() => fetch(`http://localhost:5002/animals`))
-      .then(e => e.json())
-      .then(animals =>
-        this.setState({
-          animals: animals
-        })
-      );
+    return AnimalManager.removeAndList(id).then(animals =>
+      this.setState({
+        animals: animals
+      })
+    );
   };
+
   deleteEmployee = id => {
-    return fetch(`http://localhost:5002/employees/${id}`, {
-      method: "DELETE"
-    })
-      .then(e => e.json())
-      .then(() => fetch(`http://localhost:5002/employees`))
-      .then(e => e.json())
-      .then(employees =>
-        this.setState({
-          employees: employees
-        })
-      );
+    return EmployeeManager.removeAndList(id).then(employees =>
+      this.setState({
+        employees: employees
+      })
+    );
   };
+
   deleteOwner = id => {
-    return fetch(`http://localhost:5002/owners/${id}`, {
-      method: "DELETE"
-    })
-      .then(e => e.json())
-      .then(() => fetch(`http://localhost:5002/owners`))
-      .then(e => e.json())
-      .then(owners =>
-        this.setState({
-          owners: owners
-        })
-      );
+    return OwnerManager.removeAndList(id).then(owners =>
+      this.setState({
+        owners: owners
+      })
+    );
   };
 }
 
@@ -191,3 +177,18 @@ export default class ApplicationViews extends Component {
 // }
 
 // export default ApplicationViews
+
+// old unmodularized delete code:
+// deleteAnimal = id => {
+//   return fetch(`http://localhost:5002/animals/${id}`, {
+//     method: "DELETE"
+//   })
+//     .then(e => e.json())
+//     .then(() => fetch(`http://localhost:5002/animals`))
+//     .then(e => e.json())
+//     .then(animals =>
+//       this.setState({
+//         animals: animals
+//       })
+//     );
+// };
